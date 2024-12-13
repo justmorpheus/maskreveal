@@ -1,24 +1,25 @@
 # MaskReveal: Unmask Names from RC Details
 
-**MaskReveal** is a script designed for educational Open-Source Intelligence (OSINT) purposes. It aims to unmask the name associated with RC (Registration Certificate) details using the car number plate of Indian drivers using Google's Gemini AI. The tool is strictly for learning and research purposes, **not for exploitation or illegal activities**.
-
+**MaskReveal** is a script designed for educational Open-Source Intelligence (OSINT) purposes. It aims to unmask names associated with RC (Registration Certificate) details derived from car number plates of Indian drivers using Google's Gemini AI. The tool is strictly for learning and research purposes, **not for exploitation or illegal activities**.
 
 ---
 
 ## Features
+
 - Resolves masked names from RC details by filling in placeholders (`*`).
-- Utilizes Google's Gemini AI (`gemini-1.5-flash`) for predicting Indian name.
+- Utilizes Google's Gemini AI (`gemini-1.5-flash`) for predicting Indian names.
+- Supports both direct API key input and environment variable configuration for seamless usage.
 
 ---
 
 ## Sources for Masked Names
 
-You can obtain masked names from the following platforms by entering vehicle number plate (only for Indian vehicles):
+You can obtain masked names from the following platforms by entering vehicle number plate details (specific to Indian vehicles):
 
 1. **[CarInfo App](https://www.carinfo.app/)** - Provides masked RC details for vehicles.
 2. **[VehicleInfo App](https://vehicleinfo.app/)** - A platform for vehicle information and RC details.
 3. **[Vahan (Government of India)](https://vahan.parivahan.gov.in/)** - Official government platform requiring user registration.
-4. **Other third-party websites** - Some platforms display masked names, such as `A*IS* A*MI*`.
+4. **Other third-party websites** - Some platforms display masked names, such as `R*AH*L K*UM*R`.
 
 > **Note**: This tool focuses on unmasking names obtained from non-government sources where masked details are publicly available. It is not exploiting any vulnerability or misconfiguration.
 
@@ -27,6 +28,7 @@ You can obtain masked names from the following platforms by entering vehicle num
 ## Installation and Setup
 
 ### Prerequisites
+
 - Python 3.8 or later.
 - A valid Google Generative AI API Key.
 
@@ -43,21 +45,25 @@ You can obtain masked names from the following platforms by entering vehicle num
    pip install google-generativeai
    ```
 
-3. **Configure the API Key**:
-   - Replace `your_gemini_api_key_here` in the script with your actual Gemini API key.
-   - You can obtain the API key from [Google Generative AI](https://cloud.google.com/genai/).
-
-4. **Run the Tool**:
+3. **Run the Tool**:
+   
+   #### Option 1: Passing the API Key Directly
    ```bash
-   python3 ai-guess.py "<masked-names-separated-by-comma>"
+   python3 maskreveal_script.py "<masked-names-separated-by-comma>" --ai-key "<your_gemini_api_key_here>"
    ```
+
+   #### Option 2: Using an Environment Variable for the API Key
+   ```bash
+   export AI_KEY="<your_gemini_api_key_here>"
+   python3 maskreveal_script.py "<masked-names-separated-by-comma>"
+   ```
+
    **Example**:
    ```bash
-   python3 ai-guess.py "R*AH*L K*UM*R, **AH*L K**MA*"
+   python3 maskreveal_script.py "R*AH*L K*UM*R, **AH*L K**MA*" --ai-key AIzaSyBsZvD7OWAor5PkE0G0yZMk4t4NWhrQy4s
    ```
-<img width="1600" alt="image" src="https://github.com/user-attachments/assets/a061c3c8-fdb1-4dc8-8ea0-b629c3830fae" />
 
-5. **View Results**:
+4. **View Results**:
    - The tool outputs the resolved name and Gemini AI's suggested full name.
 
 ---
@@ -76,16 +82,16 @@ You can obtain masked names from the following platforms by entering vehicle num
 
 Input:
 ```bash
-python3 ai-guess.py "R*AH*L K*UM*R, **AH*L K**MA*"
+python3 maskreveal_script.py "R*AH*L K*UM*R, **AH*L K**MA*"
 ```
 
 Output:
 ```
 Resolved Name: R*AHHL KKUMMR*
-Gemini-Suggested Name: Given the partially resolved name 'R*AHHL KKUMMR*', and knowing it's an Indian name, a likely solution is:
-
-**RAHUL KUMAR**
+Gemini-Suggested Name: The most likely full name is **RAHUL KUMAR**.
 ```
+
+<img width="1727" alt="image" src="https://github.com/user-attachments/assets/6a4d6d74-c601-43d2-bd1a-54207fdd6a6d" />
 
 ---
 
@@ -105,8 +111,14 @@ Gemini-Suggested Name: Given the partially resolved name 'R*AHHL KKUMMR*', and k
 
 > **Important**: Always comply with local laws and platform terms when using this tool.
 
+---
 
 ## Credits:
-- Chatgpt
-- Gemini AI
-- https://start.me/p/vjR5wL/osint-india
+
+- **ChatGPT** - Natural Language Processing.
+- **Gemini AI** - Name prediction and content generation.
+- **OSINT Community: https://start.me/p/vjR5wL/osint-india**
+---
+
+For additional help or feedback, please open an issue on the repository.
+
